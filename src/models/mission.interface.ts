@@ -1,8 +1,6 @@
-import STATUS_MISSION from "./STATUS.enum"
-
 export default interface IMission {
-    name: string
-    status: STATUS_MISSION
-    priority: string
-    description: string
+    name: string | undefined
+    status: string | undefined
+    priority: string | undefined
+    description: string | undefined
 }
