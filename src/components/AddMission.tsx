@@ -58,7 +58,7 @@ export default function AddMission() {
             <input type="text" ref={statusInpRef} placeholder='status'/>
             <input type="text" ref={priorityInpRef} placeholder='priority'/>
             <input type="text" ref={descriptionInpRef} placeholder='description'/>
-            <button type='submit' onClick={creatMission}></button>
+            <button type='submit' onClick={creatMission}>Add Mission</button>
             <h2 ref={messageRef}></h2>
         </form>
     </div>
