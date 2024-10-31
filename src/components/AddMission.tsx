@@ -3,7 +3,7 @@ import IMission from '../models/mission.interface'
 
 export default function AddMission() {
 
-    const baseUrl = 'https://reactexambackend.onrender.com/missions/?apikey=8642178/'
+    const baseUrl = 'https://reactexambackend.onrender.com/missions/8642178/'
 
     const nameInpRef = useRef<HTMLInputElement>(null)
     const statusInpRef = useRef<HTMLInputElement>(null)
@@ -36,8 +36,9 @@ export default function AddMission() {
             priority: priorityInpRef.current?.value,
             description: descriptionInpRef.current?.value
         }
+        console.log(newMission)
         for (let key in newMission) {
-            if (key == undefined){
+            if (newMission[key] == ''){
                 messageRef.current!.textContent = 'You missing something in your mission'
                 return   
             }

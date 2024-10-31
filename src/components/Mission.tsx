@@ -4,6 +4,17 @@ interface Prop {
     mission: IMission
 }
 export default function Mission({mission}: Prop) {
+    const delMission = async(id: string | undefined): Promise<void> => {
+        try {
+            if (id == null || id == undefined) {
+                console.log('invalid id')    
+                return
+            }
+            await fetch(`https://reactexambackend.onrender.com/missions/8642178/${id}`)
+        } catch (err) {
+            console.log(err)
+        }
+    }
   return (
     <div>
         <div>
@@ -13,7 +24,7 @@ export default function Mission({mission}: Prop) {
             <p>{mission.description}</p>
         </div>
         <div>
-            <button>Delete</button>
+            <button onClick={() => delMission(mission.id)}>Delete</button>
             <button>Progress</button>
         </div>
     </div>
