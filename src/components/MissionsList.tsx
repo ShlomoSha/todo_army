@@ -2,7 +2,12 @@ import { useEffect, useState } from "react"
 import IMission from "../models/mission.interface"
 import Mission from "./Mission"
 
-export default function MissionsList() {
+interface Prop {
+    change: number
+    setChange: (x: number) => void
+}
+
+export default function MissionsList({change, setChange}: Prop) {
 
     const baseUrl = 'https://reactexambackend.onrender.com/missions/8642178/'
 
@@ -14,17 +19,18 @@ export default function MissionsList() {
                 const result = await fetch(baseUrl)
                 const data = await result.json()
                 setMission(data)
+                console.log(data)
             } catch (err) {
                 console.log(err)
             }
         }
         getMissions()
-    },[])
+    },[change])
 
   return (
     <div className='list'>
         {!missions.length && <h3>No Mission yet</h3>}
-        {missions.map(m => <Mission mission={m}/>)}
+        {missions.map(m => <Mission mission={m} change={change} setChange={setChange} />)}
     </div>  
   )
 }

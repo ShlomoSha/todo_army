@@ -1,7 +1,12 @@
 import { FormEvent, useRef, useState } from 'react'
 import IMission from '../models/mission.interface'
 
-export default function AddMission() {
+interface Prop {
+    change: number
+    setChange: (x: number) => void
+}
+
+export default function AddMission({change, setChange}: Prop) {
 
     const baseUrl = 'https://reactexambackend.onrender.com/missions/8642178/'
 
@@ -45,6 +50,7 @@ export default function AddMission() {
         }
         try {
             postMission(newMission)
+            setChange(change + 1)
             messageRef.current!.textContent = 'create success'            
         } catch (err) {
             return
